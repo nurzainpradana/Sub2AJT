@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.Movie
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.databinding.FragmentMoviesBinding
@@ -30,7 +29,7 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        val factory = ViewModelFactory.getInstance()
         val movieViewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
         movieViewModel.getListMovie().observe(viewLifecycleOwner, { listMovie ->

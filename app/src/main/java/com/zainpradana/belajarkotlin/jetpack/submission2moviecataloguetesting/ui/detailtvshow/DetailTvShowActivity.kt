@@ -22,7 +22,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val tvShowId = intent.getIntExtra(EXTRA_TV_SHOW, 0)
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val detailTvShowViewModel = ViewModelProvider(this, factory)[DetailTvShowViewModel::class.java]
 
         detailTvShowViewModel.getTvShow(tvShowId).observe(this, { tvShow ->

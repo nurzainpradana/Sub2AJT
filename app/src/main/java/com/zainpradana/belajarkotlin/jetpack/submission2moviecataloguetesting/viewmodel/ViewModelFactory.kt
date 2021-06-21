@@ -1,6 +1,5 @@
 package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.CatalogueRepository
@@ -16,9 +15,9 @@ class ViewModelFactory private constructor(private val mCatalogueRepository: Cat
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(context: Context): ViewModelFactory =
+        fun getInstance(): ViewModelFactory =
                 instance ?: synchronized(this) {
-                    instance ?: ViewModelFactory(Injection.provideRepository(context)).apply {
+                    instance ?: ViewModelFactory(Injection.provideRepository()).apply {
                         instance = this
                     }
                 }

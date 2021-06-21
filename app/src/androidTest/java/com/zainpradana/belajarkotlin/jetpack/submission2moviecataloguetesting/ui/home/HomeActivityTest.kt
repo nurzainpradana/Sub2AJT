@@ -3,11 +3,15 @@ package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.u
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.contrib.NavigationViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.google.android.material.tabs.TabLayout
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.R
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyMovies
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyTvShow
@@ -25,6 +29,8 @@ class HomeActivityTest {
 
     @Test
     fun loadMovies() {
+        onView(ViewMatchers.withText(R.string.title_movies)).perform(ViewActions.click())
+
         delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_movies))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
@@ -37,6 +43,8 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailMovies() {
+        onView(ViewMatchers.withText(R.string.title_movies)).perform(ViewActions.click())
+
         delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_movies))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
@@ -68,7 +76,7 @@ class HomeActivityTest {
     @Test
     fun loadTvShow() {
         delayTwoSecond()
-        onView(ViewMatchers.withId(R.id.navigation_tvshow)).perform(ViewActions.click())
+        onView(ViewMatchers.withText(R.string.title_tvshow)).perform(ViewActions.click())
 
 
         delayTwoSecond()
@@ -84,7 +92,7 @@ class HomeActivityTest {
     @Test
     fun loadDetailTvShow() {
         delayTwoSecond()
-        onView(ViewMatchers.withId(R.id.navigation_tvshow)).perform(ViewActions.click())
+        onView(ViewMatchers.withText(R.string.title_tvshow)).perform(ViewActions.click())
 
 
         delayTwoSecond()
@@ -118,7 +126,7 @@ class HomeActivityTest {
 
     private fun delayTwoSecond() {
         try {
-            Thread.sleep(3000)
+            Thread.sleep(2000)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         }

@@ -22,7 +22,7 @@ class DetailMovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val movieId = intent.getIntExtra(EXTRA_MOVIE, 0)
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val detailMovieViewModel = ViewModelProvider(this, factory) [DetailMovieViewModel::class.java]
 
         detailMovieViewModel.getDetailMovie(movieId).observe(this, { movie ->

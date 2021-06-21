@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.TvShow
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.databinding.FragmentTvShowBinding
@@ -30,7 +29,7 @@ class TvShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        val factory = ViewModelFactory.getInstance()
         val tvShowViewModel = ViewModelProvider(this, factory) [TvShowViewModel::class.java]
 
         tvShowViewModel.getListTvShow().observe(viewLifecycleOwner, { listTvShow ->

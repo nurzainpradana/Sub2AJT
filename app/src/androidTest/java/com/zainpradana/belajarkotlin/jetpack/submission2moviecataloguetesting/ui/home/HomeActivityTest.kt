@@ -1,8 +1,10 @@
 package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
@@ -15,9 +17,12 @@ import com.google.android.material.tabs.TabLayout
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.R
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyMovies
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyTvShow
+import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.EspressoIdlingResource
+import org.junit.After
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Rule
 
 class HomeActivityTest {
@@ -27,15 +32,24 @@ class HomeActivityTest {
     @get:Rule
     var activityTestRule = ActivityScenarioRule(HomeActivity::class.java)
 
+    @Before
+    fun setUp(){
+        ActivityScenario.launch(HomeActivity::class.java)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.idlingResource)
+    }
+
+    @After
+    fun tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.idlingResource)
+    }
+
     @Test
     fun loadMovies() {
         onView(ViewMatchers.withText(R.string.title_movies)).perform(ViewActions.click())
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_movies))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_movies))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyMovie.size))
     }
@@ -45,12 +59,10 @@ class HomeActivityTest {
     fun loadDetailMovies() {
         onView(ViewMatchers.withText(R.string.title_movies)).perform(ViewActions.click())
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_movies))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
 
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.tv_detail_movie_title))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(ViewMatchers.withId(R.id.tv_detail_movie_description))
@@ -75,32 +87,26 @@ class HomeActivityTest {
 
     @Test
     fun loadTvShow() {
-        delayTwoSecond()
         onView(ViewMatchers.withText(R.string.title_tvshow)).perform(ViewActions.click())
 
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_tvshow))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_tvshow))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyTvShow.size))
     }
 
     @Test
     fun loadDetailTvShow() {
-        delayTwoSecond()
         onView(ViewMatchers.withText(R.string.title_tvshow)).perform(ViewActions.click())
 
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.rv_tvshow))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
 
 
-        delayTwoSecond()
         onView(ViewMatchers.withId(R.id.tv_detail_tv_show_title))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(ViewMatchers.withId(R.id.tv_detail_tv_show_description))
@@ -121,14 +127,5 @@ class HomeActivityTest {
             .check(ViewAssertions.matches(ViewMatchers.withText(dummyTvShow[0].tvShowGenre)))
         onView(ViewMatchers.withId(R.id.tv_detail_tv_show_year))
             .check(ViewAssertions.matches(ViewMatchers.withText(dummyTvShow[0].tvShowYear)))
-    }
-
-
-    private fun delayTwoSecond() {
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
     }
 }

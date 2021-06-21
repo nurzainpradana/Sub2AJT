@@ -5,6 +5,7 @@ import android.os.Looper
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.Movie
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.TvShow
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData
+import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.EspressoIdlingResource
 
 class LocalDataSource private constructor(private val dummyData: DummyData) {
 
@@ -23,12 +24,18 @@ class LocalDataSource private constructor(private val dummyData: DummyData) {
     }
 
     fun getListMovies(callback: LoadListMoviesCallback) {
-         handler.postDelayed({ callback.onAllMoviesReceived(dummyData.generateDummyMovies())}, SERVICE_LATENCY_IN_MILLIS)
+        EspressoIdlingResource.increment()
+         handler.postDelayed({ callback.onAllMoviesReceived(dummyData.generateDummyMovies())
+                             EspressoIdlingResource.decrement()
+                             }, SERVICE_LATENCY_IN_MILLIS)
     }
 
 
     fun getListTvShows(callback: LoadListTvShowsCallback) {
-        handler.postDelayed({ callback.onAllTvShowReceived(dummyData.generateDummyTvShow())}, SERVICE_LATENCY_IN_MILLIS)
+        EspressoIdlingResource.increment()
+        handler.postDelayed({ callback.onAllTvShowReceived(dummyData.generateDummyTvShow())
+                            EspressoIdlingResource.decrement()
+                            }, SERVICE_LATENCY_IN_MILLIS)
     }
 
     interface LoadListTvShowsCallback {

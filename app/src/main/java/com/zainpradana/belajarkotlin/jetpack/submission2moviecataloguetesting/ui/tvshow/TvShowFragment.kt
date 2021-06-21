@@ -32,9 +32,11 @@ class TvShowFragment : Fragment() {
 
         val factory = ViewModelFactory.getInstance(requireActivity())
         val tvShowViewModel = ViewModelProvider(this, factory) [TvShowViewModel::class.java]
-        val tvShows = tvShowViewModel.getListTvShow()
 
-        showRecyclerCardView(tvShows)
+        tvShowViewModel.getListTvShow().observe(viewLifecycleOwner, { listTvShow ->
+            binding.progressBar.visibility = View.GONE
+            showRecyclerCardView(listTvShow)
+        })
     }
 
     private fun showRecyclerCardView(tvShows: List<TvShow>) {

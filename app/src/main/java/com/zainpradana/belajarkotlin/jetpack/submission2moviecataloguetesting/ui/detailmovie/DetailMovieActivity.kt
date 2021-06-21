@@ -1,6 +1,7 @@
 package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.detailmovie
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -23,9 +24,11 @@ class DetailMovieActivity : AppCompatActivity() {
         val movieId = intent.getIntExtra(EXTRA_MOVIE, 0)
         val factory = ViewModelFactory.getInstance(this)
         val detailMovieViewModel = ViewModelProvider(this, factory) [DetailMovieViewModel::class.java]
-        detailMovieViewModel.getDetailMovie(movieId)?.let {
-            setView(it)
-        }
+
+        detailMovieViewModel.getDetailMovie(movieId).observe(this, { movie ->
+            binding.progressBar.visibility = View.GONE
+            setView(movie)
+        })
     }
 
     private fun setView(movie: Movie?) {

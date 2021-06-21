@@ -1,23 +1,22 @@
-package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source
+package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.LocalDataSource
+import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.CatalogueDataSource
+import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.CatalogueRepository
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.Movie
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.TvShow
 
-/*
-    Untuk menghubungkan kelas RemoteDataSource
- */
-class CatalogueRepository(private val localDataSource: LocalDataSource): CatalogueDataSource {
+class FakeCatalogueRepository(private val localDataSource: LocalDataSource):
+    CatalogueDataSource {
     companion object {
         @Volatile
         private var instance: CatalogueRepository? = null
 
         fun getInstance(localData: LocalDataSource): CatalogueRepository =
-                instance ?: synchronized(this) {
-                    instance ?: CatalogueRepository(localData).apply { instance = this }
-                }
+            instance ?: synchronized(this) {
+                instance ?: CatalogueRepository(localData).apply { instance = this }
+            }
     }
 
     override fun getListMovies(): LiveData<ArrayList<Movie>> {

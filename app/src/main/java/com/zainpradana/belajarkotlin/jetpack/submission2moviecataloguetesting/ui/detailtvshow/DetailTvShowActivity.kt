@@ -1,6 +1,7 @@
 package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.detailtvshow
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -24,7 +25,10 @@ class DetailTvShowActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         val detailTvShowViewModel = ViewModelProvider(this, factory)[DetailTvShowViewModel::class.java]
 
-        detailTvShowViewModel.getTvShow(tvShowId)?.let { setView(it) }
+        detailTvShowViewModel.getTvShow(tvShowId).observe(this, { tvShow ->
+            binding.progressBar.visibility = View.GONE
+            setView(tvShow)
+        })
     }
 
     private fun setView(tvShow: TvShow?) {

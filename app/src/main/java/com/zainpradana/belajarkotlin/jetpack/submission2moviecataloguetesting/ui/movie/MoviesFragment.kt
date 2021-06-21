@@ -32,8 +32,11 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val factory = ViewModelFactory.getInstance(requireActivity())
         val movieViewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
-        val movies = movieViewModel.getListMovie()
-        showRecyclerCardView(movies)
+
+        movieViewModel.getListMovie().observe(viewLifecycleOwner, { listMovie ->
+            binding.progressBar.visibility = View.GONE
+            showRecyclerCardView(listMovie)
+        })
     }
 
     private fun showRecyclerCardView(movies: ArrayList<Movie>) {

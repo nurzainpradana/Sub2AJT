@@ -94,9 +94,4 @@ dependencies {
 
     testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
-
-
-
-
-
 }

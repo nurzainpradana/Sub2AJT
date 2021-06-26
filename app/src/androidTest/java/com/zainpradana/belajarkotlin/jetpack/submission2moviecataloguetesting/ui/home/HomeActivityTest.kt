@@ -2,28 +2,21 @@ package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.u
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.contrib.NavigationViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.google.android.material.tabs.TabLayout
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.R
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyMovies
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData.generateDummyTvShow
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.EspressoIdlingResource
 import org.junit.After
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
 class HomeActivityTest {
     private val dummyMovie = generateDummyMovies()

@@ -54,6 +54,7 @@
             android:textSize="20sp"
             android:textAllCaps="true"
             android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_detail_tv_show_poster_blur"
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:textSize="16sp"
+            android:textColor="@color/darkGrey"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_tv_show_title"
@@ -91,6 +93,7 @@
             android:text="@string/genre"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view1" />
 
@@ -130,6 +133,7 @@
             android:text="@string/description"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view2" />
 
@@ -141,6 +145,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="26dp"
             android:textSize="16sp"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_tv_show_description_text" />

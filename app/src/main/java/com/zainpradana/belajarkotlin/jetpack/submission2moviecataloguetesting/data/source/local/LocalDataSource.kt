@@ -2,12 +2,14 @@ package com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.d
 
 import android.os.Handler
 import android.os.Looper
+import androidx.lifecycle.LiveData
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.Movie
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.entity.TvShow
+import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.data.source.local.room.CatalogueDao
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.DummyData
 import com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.util.EspressoIdlingResource
 
-class LocalDataSource private constructor(private val dummyData: DummyData) {
+class LocalDataSource private constructor(private val dummyData: DummyData, private val mCatalogueDao: CatalogueDao) {
 
     private val handler = Handler(Looper.getMainLooper())
 
@@ -37,6 +39,10 @@ class LocalDataSource private constructor(private val dummyData: DummyData) {
                             EspressoIdlingResource.decrement()
                             }, SERVICE_LATENCY_IN_MILLIS)
     }
+
+    fun getSavedMovies(): LiveData<List<Movie>> = mCatalogueDao.getSavedMovie()
+
+    fun getSavedTvShows(): LiveData<List<TvShow>> = mCatalogueDao.getSavedTvShow()
 
     interface LoadListTvShowsCallback {
         fun onAllTvShowReceived(listTvShowsCallback: List<TvShow>)

@@ -14,5 +14,7 @@
     <string name="poster_movie">Poster Movie</string>
     <string name="movie">Film</string>
     <string name="tvshow">Acara TV</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_list">Daftar Favorit</string>
 
 </resources>

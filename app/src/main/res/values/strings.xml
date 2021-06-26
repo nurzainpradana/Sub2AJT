@@ -13,6 +13,8 @@
     <string name="poster_movie">Poster Movie</string>
     <string name="movie">Movie</string>
     <string name="tvshow">Tv Show</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_list">Favorite List</string>
 
 
 </resources>

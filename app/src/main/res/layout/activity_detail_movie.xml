@@ -54,6 +54,7 @@
             android:textAllCaps="true"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/img_detail_movie_poster"
@@ -67,6 +68,7 @@
             android:textSize="16sp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/darkGrey"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_movie_title"
             app:layout_constraintStart_toEndOf="@id/img_detail_movie_poster"/>
 
@@ -92,6 +94,7 @@
             android:text="@string/genre"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view1" />
 
@@ -131,6 +134,7 @@
             android:text="@string/description"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view2" />
 
@@ -142,6 +146,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="26dp"
             android:textSize="16sp"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_movie_description_text" />

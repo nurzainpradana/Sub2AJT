@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name="com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.detailtvshow.DetailTvShowActivity" />
-        <activity android:name="com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.detailmovie.DetailMovieActivity" />
+        <activity android:name=".ui.favorite.FavoriteActivity"></activity>
+        <activity android:name=".ui.detailtvshow.DetailTvShowActivity" />
+        <activity android:name=".ui.detailmovie.DetailMovieActivity" />
         <activity
-            android:name="com.zainpradana.belajarkotlin.jetpack.submission2moviecataloguetesting.ui.home.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
